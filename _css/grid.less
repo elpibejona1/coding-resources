@@ -1,0 +1,94 @@
+/*
+  960 Grid System ~ Core CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+// General Grid Variables:
+@containerWidth: 1080px;
+@gutter: 1%;
+
+/* `Container
+----------------------------------------------------------------------------------------------------*/
+
+.fullContainer {
+  width: 100%;
+  position: relative;
+  padding: 0 20px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1024px;
+  position: relative;
+  padding: 0 20px;
+}
+
+/* `Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+* { box-sizing: border-box; }
+
+.row {
+  width: 100%;
+  clear: both;
+  position: relative;
+
+  > *:first-child {
+    margin-left: 0;
+  }
+}
+
+/* `Grid >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.columns(@c) {
+	width: ((@c * 100%) / 12) - @gutter;
+  float: left;
+  margin-left: @gutter;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 870px) {
+    width: 100%;
+    float: none;
+    margin-left: 0;
+  }
+}
+
+/* `Prefix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.prefix(@p) { padding-left: ((@p * 100%) / 12) - @gutter + ((@gutter / 12) * @p) + @gutter; }
+
+/* `Prefix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.prefixMargin(@p) { margin-left: ((@p * 100%) / 12) + ((@gutter / 12) * @p) + @gutter; }
+
+/* `Suffix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.suffix(@s) { padding-right: ((@s * 100%) / 12) - @gutter + ((@gutter / 12) * @p) + @gutter; }
+
+
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.container:after,
+.row:after {
+  content: "";
+  display: table;
+  clear: both; 
+}
